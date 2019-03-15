@@ -5,10 +5,8 @@
 <!-- toc -->
 
 - [Overview](#overview)
-- [Learn](#howto)
 - [Setup](#setup)
 - [Testing](#testing)
-- [Ready?](#ready)
 
 <!-- tocstop -->
 
