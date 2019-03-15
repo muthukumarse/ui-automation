@@ -1,0 +1,43 @@
+{
+  "name": "ui-automation",
+  "version": "1.0.0",
+  "description": "UI Automation",
+  "developer": "Muthukumar, Selvarasu",
+  "email": "muthukumar.se@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muthukumarse/ui-automation.git"
+  },
+  "engines": {
+    "npm": ">=6",
+    "node": ">=8"
+  },
+  "scripts": {
+    "test": "npm run report:clean && npm run test:chrome & npm run test:firefox",
+    "test:chrome": "cucumber-js src/features/*.feature --require src --world-parameters \"{\\\"browser\\\": \\\"chrome\\\"}\" -f json:reports/automation_report_chrome.json",
+    "test:firefox": "cucumber-js src/features/*.feature --require src --world-parameters \"{\\\"browser\\\": \\\"firefox\\\"}\" -f json:reports/automation_report_firefox.json",
+    "test:parallel": "npm run report:clean && npm run test:parallel:chrome & npm run test:parallel:firefox ",
+    "test:parallel:chrome": "cucumber-js src/features/*.feature --require src --world-parameters \"{\\\"browser\\\": \\\"chrome\\\"}\" -f json:reports/automation_report_chrome.json --parallel 5",
+    "test:parallel:firefox": "cucumber-js src/features/*.feature --require src --world-parameters \"{\\\"browser\\\": \\\"firefox\\\"}\" -f json:reports/automation_report_firefox.json --parallel 5",
+    "test:feature:chrome": "cucumber-js --require src --world-parameters \"{\\\"browser\\\": \\\"chrome\\\"}\" -f json:reports/automation_report_chrome.json",
+    "test:feature:firefox": "cucumber-js --require src --world-parameters \"{\\\"browser\\\": \\\"firefox\\\"}\" -f json:reports/automation_report_firefox.json",
+    "test:scenario:chrome": "cucumber-js src/features/*.feature --require src --world-parameters \"{\\\"browser\\\": \\\"chrome\\\"}\" -f json:reports/automation_report_chrome.json --name ",
+    "test:scenario:firefox": "cucumber-js src/features/*.feature --require src --world-parameters \"{\\\"browser\\\": \\\"firefox\\\"}\" -f json:reports/automation_report_firefox.json --name ",
+    "test:tags:chrome": "cucumber-js src/features/*.feature --require src --world-parameters \"{\\\"browser\\\": \\\"chrome\\\"}\" -f json:reports/automation_report_chrome.json --tags ",
+    "test:tags:firefox": "cucumber-js src/features/*.feature --require src --world-parameters \"{\\\"browser\\\": \\\"firefox\\\"}\" -f json:reports/automation_report_firefox.json --tags ",
+    "report:clean": "rimraf ./reports/automation_report*.*",
+    "report:generate": "rimraf coverage && node reports/report-metadata.js && node reports/report-generate.js",
+    "report:browse": "node reports/report-browse.js",
+    "report:zip": "nodezip -c reports/automation_report.zip reports/automation_report*.json",
+    "report:unzip": "nodezip -x reports/automation_report.zip"
+  },
+  "dependencies": {
+    "connect": "3.6.6",
+    "cucumber": "5.1.0",
+    "multiple-cucumber-html-reporter": "1.11.6",
+    "node-zip": "1.1.1",
+    "puppeteer": "1.13.0",
+    "puppeteer-firefox": "0.5.0",
+    "serve-static": "1.13.2"
+  }
+}
