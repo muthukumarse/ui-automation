@@ -5,7 +5,7 @@ setDefaultTimeout(async function () {
 })
 
 Before(async function () {
-  await this.OpenPage(`${this.UI_PROJECT_HOST}`);
+  // do something
 });
 
 After(async function (testCase) {

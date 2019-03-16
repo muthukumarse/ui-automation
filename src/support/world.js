@@ -12,8 +12,7 @@ class Core {
     this.tempState = {};
     this.headless = true;
     this.UI_PROJECT_HOST =
-      process.env.UI_PROJECT_HOST ||
-      "http://localhost:3000";
+      process.env.UI_PROJECT_HOST || "https://github.com/";
   }
 
   getState(key) {
